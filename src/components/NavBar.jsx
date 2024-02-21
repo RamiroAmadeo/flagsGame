@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = ({list, onSearch}) => {
+const NavBar = ({onSearch}) => {
     const [query, setQuery] = useState("");
 
-    const handeChange = (e) => {
+    const handleChange = (e) => {
         setQuery(e.target.value);
         onSearch(e.target.value);
-        console.log(e.target.value)
     }
-
-    /* !search ? list : list.filter((dato) => dato.name.common.toLowerCase().includes(search.toLocaleLowerCase)) */
 
     return(
         <nav>
@@ -22,8 +19,7 @@ const NavBar = ({list, onSearch}) => {
                 <a>Disabled</a>
             </div>
             <form>
-                <input value={query} onChange={handeChange} type="text" placeholder="Search"/>
-                <button type="submit"/*  onClick={handleSearch} */>Search</button>
+                <input value={query} onChange={handleChange} type="text" placeholder="Search"/>
             </form>
       </nav>
     );
