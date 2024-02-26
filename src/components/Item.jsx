@@ -9,22 +9,24 @@ const Item = ( {list} ) => {
       };
 
     return(
-        <section>
-            <div>
-                <NavBar/>
-            </div>
-            <div className="item">
-                <h1>{list.name && list.name.common}</h1>
-                <p>{flag ? "Flag" : "Coat of arms"}</p>
-                <img onClick={changeFlag}
-                    src={flag ? list.flags && list.flags.png : list.flags && list.coatOfArms.png}>
-                </img>
-                <h2>Oficial name: {list.name && list.name.official}</h2>
-                <h2>Capital: {list.capital} | {list.region}</h2>
-                <h3>Population: {list.population}</h3>
-                {/* maps para otro dia */}
-            </div>
-        </section>
+        <div>
+            <NavBar/>
+            <section className="flex flex-col items-center">
+                <div className="bg-red-100 flex flex-col items-center border-4 rounded-lg w-max mt-4">
+                    <h1 className="flag-name">{list.name && list.name.common}</h1>
+                    <p>{flag ? "Flag" : "Coat of arms"}</p>
+                    <img className="card-image" onClick={changeFlag}
+                        src={flag ? list.flags && list.flags.png : list.flags && list.coatOfArms.png}>
+                    </img>
+                    <div className="text-left text-lg mb-4">
+                        <p>Oficial name: {list.name && list.name.official}</p>
+                        <p>Capital: {list.capital} | {list.region}</p>
+                        <p>Population: {list.population}</p>
+                    </div>
+                    {/* maps para otro dia */}
+                </div>
+            </section>
+        </div>
     );
 };
 

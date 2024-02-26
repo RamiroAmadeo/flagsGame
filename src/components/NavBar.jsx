@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = ({onSearch}) => {
+const NavBar = ({ onSearch }) => {
     const [query, setQuery] = useState("");
 
     const handleChange = (e) => {
@@ -10,16 +10,20 @@ const NavBar = ({onSearch}) => {
     }
 
     return(
-        <nav>
+        <nav className="flex justify-around items-center py-2 bg-red-300">
             <Link to="/">
-                <p>Titulo</p>
+                <p>FlagsGame</p>
             </Link>
-            <div className="links">
-                <a href="#">Link</a>
-                <a>Disabled</a>
-            </div>
+            {/* <div>
+                <Link to={`flags/Europe`}>Link</Link>
+            </div> */}
             <form>
-                <input value={query} onChange={handleChange} type="text" placeholder="Search"/>
+                <input className="input"
+                value={query}
+                onChange={handleChange}
+                type="text"
+                placeholder="Search coutry..."
+                />
             </form>
       </nav>
     );

@@ -15,7 +15,6 @@ const ItemContainer = () => {
             setList(data.find((el) => el.name.common === (name)))
         })
     }, [name])
-
     return(
         <div className="item-container">
             <Item list={list} />
