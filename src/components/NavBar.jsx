@@ -14,9 +14,9 @@ const NavBar = ({ onSearch }) => {
             <Link to="/">
                 <p>FlagsGame</p>
             </Link>
-            {/* <div>
-                <Link to={`flags/Europe`}>Link</Link>
-            </div> */}
+            <div>
+                <Link to={`/game`}>Link</Link>
+            </div>
             <form>
                 <input className="input"
                 value={query}
