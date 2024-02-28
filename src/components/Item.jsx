@@ -13,7 +13,7 @@ const Item = ( {list} ) => {
             <NavBar/>
             <section className="flex flex-col items-center">
                 <div className="bg-red-100 flex flex-col items-center border-4 rounded-lg w-max mt-4">
-                    <h1 className="flag-name">{list.name && list.name.common}</h1>
+                    <h1 className="card-title">{list.name && list.name.common}</h1>
                     <p>{flag ? "Flag" : "Coat of arms"}</p>
                     <img className="card-image" onClick={changeFlag}
                         src={flag ? list.flags && list.flags.png : list.flags && list.coatOfArms.png}>
