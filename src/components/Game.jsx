@@ -1,43 +1,43 @@
 import { useState, useEffect } from "react";
 
 const Game = () => {
-    const [objetos, setObjetos] = useState([]);
-    const [objetoSeleccionado, setObjetoSeleccionado] = useState({});
-    const [respuestaUsuario, setRespuestaUsuario] = useState('');
-    const [resultado, setResultado] = useState('');
+    const [object, setObjects] = useState([]);
+    const [objectSelected, setObjectSelected] = useState({});
+    const [userResponse, setUserResponse] = useState('');
+    const [result, setResult] = useState('');
 
     useEffect(() => {
         fetch('https://restcountries.com/v3.1/all')
             .then((res) => res.json())
             .then((data) => {
-                setObjetos(data);
+                setObjects(data);
             });
     }, []);
 
     useEffect(() => {
-        seleccionarObjetoAleatorio();
-    }, [objetos]);
+        randomObject();
+    }, [object]);
 
-    const seleccionarObjetoAleatorio = () => {
-        if (objetos.length) {
-            const indiceAleatorio = Math.floor(Math.random() * objetos.length);
-            setObjetoSeleccionado(objetos[indiceAleatorio]);
+    const randomObject = () => {
+        if (object.length) {
+            const randomIndex = Math.floor(Math.random() * object.length);
+            setObjectSelected(object[randomIndex]);
         }
     };
 
-    const manejarRespuesta = () => {
-        if (respuestaUsuario.toLowerCase() === objetoSeleccionado.name.common.toLowerCase()) {
-            setResultado(<h2 className="text-3xl text-green-600">Bien perrito</h2>);
+    const handleResponse = () => {
+        if (userResponse.toLowerCase() === objectSelected.name.common.toLowerCase()) {
+            setResult(<h2 className="text-3xl text-green-600">Bien perrito</h2>);
             setTimeout(() => {
-                setRespuestaUsuario("");
-                seleccionarObjetoAleatorio();
-                setResultado("")
+                setUserResponse("");
+                randomObject();
+                setResult("")
             }, 2000)
         } else {
-            setResultado(<h2 className="text-3xl text-red-600">Mal perreke, intenta de nuevo</h2>);
+            setResult(<h2 className="text-3xl text-red-600">Mal perreke, intenta de nuevo</h2>);
             setTimeout(()=>{
-                setRespuestaUsuario("")
-                setResultado("")
+                setUserResponse("")
+                setResult("")
             }, 2000)
         }
     };
@@ -45,15 +45,15 @@ const Game = () => {
     return (
         <div className="bg-red-100 flex flex-col items-center mt-4">
             <h1 className="card-title">What's the name of this flag?</h1>
-            <img className="card-image" src={objetoSeleccionado.flags && objetoSeleccionado.flags.png}></img>
+            <img className="card-image" src={objectSelected.flags && objectSelected.flags.png}></img>
             <input className="input mt-4"
                 type="text"
-                value={respuestaUsuario}
-                onChange={(e) => setRespuestaUsuario(e.target.value)}
+                value={userResponse}
+                onChange={(e) => setUserResponse(e.target.value)}
             />
-            <button className="btn" onClick={manejarRespuesta}>Adivinar</button>
-            <button className="btn" onClick={seleccionarObjetoAleatorio}>X</button>
-            <div>{resultado}</div>
+            <button className="btn" onClick={handleResponse}>Adivinar</button>
+            <button className="btn" onClick={randomObject}>X</button>
+            <div>{result}</div>
         </div>
     );
 };
