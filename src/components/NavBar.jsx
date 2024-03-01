@@ -10,7 +10,7 @@ const NavBar = ({ onSearch }) => {
     }
 
     return(
-        <nav className="flex justify-around items-center py-2 bg-red-300">
+        <nav className="flex justify-around items-center py-2 bg-[#0B070B] text-[#F1F1F1] border-b-[1px] border-gray-700 ">
             <Link to="/">
                 <p>FlagsGame</p>
             </Link>

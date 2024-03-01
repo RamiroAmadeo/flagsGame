@@ -5,6 +5,7 @@ const Game = () => {
     const [objectSelected, setObjectSelected] = useState({});
     const [userResponse, setUserResponse] = useState('');
     const [result, setResult] = useState('');
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
         fetch('https://restcountries.com/v3.1/all')
@@ -27,17 +28,19 @@ const Game = () => {
 
     const handleResponse = () => {
         if (userResponse.toLowerCase() === objectSelected.name.common.toLowerCase()) {
-            setResult(<h2 className="text-3xl text-green-600">Bien perrito</h2>);
+            setResult(<h2 className="text-3xl text-green-600">!Correct¡</h2>);
             setTimeout(() => {
                 setUserResponse("");
                 randomObject();
                 setResult("")
+                setCount(count + 1)
             }, 2000)
         } else {
-            setResult(<h2 className="text-3xl text-red-600">Mal perreke, intenta de nuevo</h2>);
+            setResult(<h2 className="text-3xl text-red-600">!Incorrect¡ Try again </h2>);
             setTimeout(()=>{
                 setUserResponse("")
                 setResult("")
+                setCount(0)
             }, 2000)
         }
     };
@@ -45,6 +48,7 @@ const Game = () => {
     return (
         <div className="bg-red-100 flex flex-col items-center mt-4">
             <h1 className="card-title">What's the name of this flag?</h1>
+            <p>Winning Streak: {count}</p>
             <img className="card-image" src={objectSelected.flags && objectSelected.flags.png}></img>
             <input className="input mt-4"
                 type="text"
@@ -62,6 +66,4 @@ export default Game;
 
 
 // AGREGAR CONTADOR QUE DIGA CUANTOS ACIERTOS SEGUIDOS VAS.
-// AGREGAR BOTON PARA CAMBIAR BANDERA
-// SI NO ESCRIBO NADA SALE ERROR (QUE HACER?)
 // COMO EVITAR PONER ACENTO Y QUE SEA CORRECTO

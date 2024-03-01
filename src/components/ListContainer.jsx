@@ -23,7 +23,6 @@ const ListContainer = () => {
 
     return(
         <div>
-            <h1 className="text-3xl color bg-blue-300">Bienvenidos!</h1>
             <NavBar list={filterList} onSearch={search}/>
             <List list={filterList}/>
         </div>
