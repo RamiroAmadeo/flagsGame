@@ -46,11 +46,11 @@ const Game = () => {
     };
 
     return (
-        <div className="bg-red-100 flex flex-col items-center mt-4">
+        <div className="bg-[#230C22] flex flex-col items-center py-10">
             <h1 className="card-title">What's the name of this flag?</h1>
-            <p>Winning Streak: {count}</p>
+            <p className="text-[#f1f1f1] mt-5">Winning Streak: {count}</p>
             <img className="card-image" src={objectSelected.flags && objectSelected.flags.png}></img>
-            <input className="input mt-4"
+            <input className="input my-5"
                 type="text"
                 value={userResponse}
                 onChange={(e) => setUserResponse(e.target.value)}
@@ -65,5 +65,4 @@ const Game = () => {
 export default Game;
 
 
-// AGREGAR CONTADOR QUE DIGA CUANTOS ACIERTOS SEGUIDOS VAS.
 // COMO EVITAR PONER ACENTO Y QUE SEA CORRECTO

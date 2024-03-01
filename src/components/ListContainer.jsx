@@ -6,14 +6,24 @@ const ListContainer = () => {
     const [list, setList] = useState([])
     const [filterList, setFilterList] = useState([])
 
-    useEffect(() =>{
+    useEffect(() => {
         fetch('https://restcountries.com/v3.1/all')
             .then((res) => res.json())
             .then((data) => {
-                    setList(data);
-                    setFilterList(data);
+                data.sort((a, b) => {
+                    const nameA = a.name.common.toLowerCase();
+                    const nameB = b.name.common.toLowerCase();
+                    if (nameA < nameB) return -1;
+                    if (nameA > nameB) return 1;
+                    return 0;
+                });
+                setList(data);
+                setFilterList(data);
+            })
+            .catch((error) => {
+                console.error("Error al obtener los datos:", error);
             });
-    }, [])
+    }, []);
 
     const search = (query) => {
         const filtered = list.filter(item =>
