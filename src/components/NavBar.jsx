@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useMatch } from "react-router-dom";
 
 const NavBar = ({ onSearch }) => {
+    const gameMatch = useMatch("/game");
+    const homeMatch = useMatch("/");
     const [query, setQuery] = useState("");
 
     const handleChange = (e) => {
@@ -10,12 +12,12 @@ const NavBar = ({ onSearch }) => {
     }
 
     return(
-        <nav className="flex justify-around items-center py-2 bg-[#0B070B] text-[#F1F1F1] border-b-[1px] border-gray-700 ">
-            <Link to="/">
+        <nav className="fixed w-full flex justify-around items-center py-2 bg-[#0B070B] text-[#F1F1F1] border-b-[1px] border-gray-700 ">
+            <NavLink to="/" className={homeMatch ? "border-b-2" : ""}>
                 <p>FlagsGame</p>
-            </Link>
+            </NavLink>
             <div>
-                <Link to={`/game`}>Link</Link>
+                <NavLink to="/game" className={gameMatch ? "border-b-2" : ""}>Game</NavLink>
             </div>
             <form>
                 <input className="input"
