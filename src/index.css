@@ -18,7 +18,7 @@
     @apply text-2xl font-medium text-[#F1F1F1] pt-5
   }
   .card-image {
-    @apply border-2 border-black m-5 rounded-lg
+    @apply border-2 border-black m-5 rounded-lg max-w-md max-h-min
   }
   .current {
     @apply border-b-2

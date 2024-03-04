@@ -58,8 +58,8 @@ const Game = () => {
                     value={userResponse}
                     onChange={(e) => setUserResponse(e.target.value)}
                 />
-                <button className="btn" onClick={handleResponse}>Adivinar</button>
-                <button className="btn" onClick={randomObject}>X</button>
+                <button className="btn" onClick={handleResponse}>Guess</button>
+                <button className="btn" onClick={randomObject}>Another flag</button>
                 <div>{result}</div>
             </div>
         </div>
