@@ -24,6 +24,7 @@ const Game = () => {
         if (object.length) {
             const randomIndex = Math.floor(Math.random() * object.length);
             setObjectSelected(object[randomIndex]);
+            setCount(0);
         }
     };
 

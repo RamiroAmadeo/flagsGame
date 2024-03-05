@@ -12,21 +12,19 @@ const NavBar = ({ onSearch }) => {
     }
 
     return(
-        <nav className="fixed w-full flex justify-around items-center py-2 bg-[#0B070B] text-[#F1F1F1] border-b-[1px] border-gray-700 ">
+        <nav className="flex justify-around items-center py-2 bg-[#0B070B] text-[#F1F1F1] border-b-[1px] border-gray-700 ">
             <NavLink to="/" className={homeMatch ? "border-b-2" : ""}>
-                <p>FlagsGame</p>
+                <p>Flags</p>
             </NavLink>
             <div>
                 <NavLink to="/game" className={gameMatch ? "border-b-2" : ""}>Game</NavLink>
             </div>
-            <form>
-                <input className="input"
-                value={query}
-                onChange={handleChange}
-                type="text"
-                placeholder="Search coutry..."
-                />
-            </form>
+            <input className="input"
+            value={query}
+            onChange={handleChange}
+            type="text"
+            placeholder="Search coutry..."
+            />
       </nav>
     );
 };
